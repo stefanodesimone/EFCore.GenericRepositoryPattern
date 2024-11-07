@@ -35,6 +35,10 @@ namespace EFGenericRepositoryPattern.Repositories
         /// </summary>
         void Save();
         /// <summary>
+        /// To persist to the database.
+        /// </summary>
+        Task<int> SaveAsync();
+        /// <summary>
         /// Execute a sql command asynchronously.
         /// </summary>
         /// <param name="sql">The sql string.</param>

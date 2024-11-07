@@ -1,4 +1,6 @@
+using App.API.Interfaces;
 using App.API.Models;
+using App.API.Services;
 using EFGenericRepositoryPattern.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,8 @@ namespace App.API
        options.UseSqlServer(conn));
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<DbContext, Db871579957Context>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

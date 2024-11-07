@@ -1,4 +1,6 @@
-﻿using App.API.Models;
+﻿using App.API.Interfaces;
+using App.API.Models;
+using App.API.Services;
 using EFGenericRepositoryPattern.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,21 +14,24 @@ namespace App.API.Controllers
     {
         private readonly ILogger<UtentiController> _logger;
         private readonly IGenericRepository<Utenti> _repo;
-        public UtentiController(ILogger<UtentiController> logger, IGenericRepository<Utenti> repo)
+        private readonly IUserService _userService;
+
+        public UtentiController(ILogger<UtentiController> logger, IGenericRepository<Utenti> repo, IUserService userService)
         {
             _logger = logger;
             _repo = repo;
+            _userService= userService;
         }
         // GET: api/<UtentiController>
         [HttpGet]
         public IEnumerable<Utenti> Get()
         {
-            return _repo.GetAll();
+            return _userService.GetAll(); 
         }
         [HttpGet("GetAllSql")]
         public IEnumerable<Utenti> GetAllSql()
         {
-            return _repo.ExecuteSqlCommand($"select * from Utenti");
+            return _userService.ExecuteSqlCommand($"select * from Utenti");
         }
 
 
@@ -34,7 +39,7 @@ namespace App.API.Controllers
         [HttpGet("{id}")]
         public Utenti Get(int id)
         {
-            return _repo.GetById(id);
+            return _userService.GetById(id); 
         }
 
         // POST api/<UtentiController>
@@ -53,7 +58,7 @@ namespace App.API.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _repo.Delete(id);
+            _userService.Delete(id);
         }
     }
 }
