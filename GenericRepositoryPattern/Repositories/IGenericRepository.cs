@@ -51,14 +51,8 @@ namespace EFGenericRepositoryPattern.Repositories
         /// <param name="sql">The sql string.</param>
         /// <param name="parameters">The parameters in the sql string.</param>
         /// <returns>Returns int.</returns>
-        Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
+        IEnumerable<TEntity> ExecuteSqlCommandAsync(FormattableString sql, params object[] parameters);
 
-        /// <summary>
-        /// Execute a sql command asynchronously.
-        /// </summary>
-        /// <param name="sql">The sql string.</param>
-        /// <param name="parameters">The parameters in the sql string.</param>
-        /// <returns>Returns int.</returns>
-        Task<int> ExecuteSqlCommandAsync(string sql, IEnumerable<object> parameters, CancellationToken cancellationToken = default);
+
     }
 }
