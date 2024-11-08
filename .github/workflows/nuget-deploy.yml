@@ -28,11 +28,17 @@ jobs:
 
     - name: 'Build project'
       run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+    - name: calculate version
+      id: calculate-version
+      uses: bitshifted/git-auto-semver@v1
+      
+    - name: Use version
+      run: echo 'Calculated version:' ${{ steps.calculate-version.outputs.version-string }}
 
-    - name: 'Get Version'
-      id: version
-      uses: battila7/get-version-action@v2.2.1
-    - run: echo ${{ steps.get_version.outputs.version }}
+#    - name: 'Get Version'
+#      id: version
+#      uses: battila7/get-version-action@v2.2.1
+#    - run: echo ${{ steps.get_version.outputs.version }}
     
 #    - name: 'Pack project'
 #      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
