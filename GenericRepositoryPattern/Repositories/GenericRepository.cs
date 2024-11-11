@@ -59,13 +59,26 @@ namespace EFGenericRepositoryPattern.Repositories
         public IEnumerable<TEntity> ExecuteSqlCommand(FormattableString sql, CancellationToken cancellationToken = default)
         {
             return _dbSet.FromSql(sql);
-                //_context.Database.SqlQuery<TEntity>(sql);
         }
 
         
-        IEnumerable<TEntity> IGenericRepository<TEntity>.ExecuteSqlCommandAsync(FormattableString sql, params object[] parameters)
+        public IEnumerable<TEntity> ExecuteSqlCommandWithParam(string sql, params object[] parameters)
         {
-            throw new NotImplementedException();
+            return  _dbSet.FromSqlRaw(sql, parameters);
+            
         }
+
+        public async Task<IEnumerable<TEntity>> ExecuteSqlCommandAsync(FormattableString sql, CancellationToken cancellationToken = default)
+        {
+            return await _dbSet.FromSql(sql).ToListAsync();
+        }
+
+
+        public async Task<IEnumerable<TEntity>> ExecuteSqlCommandWithParamAsync(string sql, params object[] parameters)
+        {
+            return await _dbSet.FromSqlRaw(sql, parameters).ToListAsync();
+
+        }
+
     }
 }

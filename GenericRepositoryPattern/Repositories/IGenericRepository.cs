@@ -38,12 +38,14 @@ namespace EFGenericRepositoryPattern.Repositories
         /// To persist to the database.
         /// </summary>
         Task<int> SaveAsync();
+
+
         /// <summary>
         /// Execute a sql command asynchronously.
         /// </summary>
         /// <param name="sql">The sql string.</param>
         /// <returns>Returns int.</returns>
-        IEnumerable<TEntity> ExecuteSqlCommand(FormattableString sql, CancellationToken cancellationToken = default);
+        Task<IEnumerable<TEntity>> ExecuteSqlCommandAsync(FormattableString sql, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Execute a sql command asynchronously.
@@ -51,7 +53,22 @@ namespace EFGenericRepositoryPattern.Repositories
         /// <param name="sql">The sql string.</param>
         /// <param name="parameters">The parameters in the sql string.</param>
         /// <returns>Returns int.</returns>
-        IEnumerable<TEntity> ExecuteSqlCommandAsync(FormattableString sql, params object[] parameters);
+        Task<IEnumerable<TEntity>> ExecuteSqlCommandWithParamAsync(string sql, params object[] parameters);
+
+        /// <summary>
+        /// Execute a sql command synchronously.
+        /// </summary>
+        /// <param name="sql">The sql string.</param>
+        /// <returns>Returns int.</returns>
+        IEnumerable<TEntity> ExecuteSqlCommand(FormattableString sql, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Execute a sql command synchronously.
+        /// </summary>
+        /// <param name="sql">The sql string.</param>
+        /// <param name="parameters">The parameters in the sql string.</param>
+        /// <returns>Returns int.</returns>
+        IEnumerable<TEntity> ExecuteSqlCommandWithParam(string sql, params object[] parameters);
 
 
     }
