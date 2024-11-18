@@ -1,7 +1,7 @@
 using App.API.Interfaces;
 using App.API.Models;
 using App.API.Services;
-using EFGenericRepositoryPattern.Repositories;
+using EFCore.GenericRepositoryPattern.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.API

@@ -1,7 +1,7 @@
 ﻿using App.API.Interfaces;
 using App.API.Models;
 using App.API.Services;
-using EFGenericRepositoryPattern.Repositories;
+using EFCore.GenericRepositoryPattern.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

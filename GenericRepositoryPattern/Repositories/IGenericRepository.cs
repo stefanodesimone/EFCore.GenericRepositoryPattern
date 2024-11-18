@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFGenericRepositoryPattern.Repositories
+namespace EFCore.GenericRepositoryPattern.Repositories
 {    
     public interface IGenericRepository<TEntity>
         where TEntity : class

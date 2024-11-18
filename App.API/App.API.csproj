@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GenericRepositoryPattern\EFGenericRepositoryPattern.csproj" />
+    <ProjectReference Include="..\GenericRepositoryPattern\EFCore.GenericRepositoryPattern.csproj" />
   </ItemGroup>
 
 </Project>

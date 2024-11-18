@@ -1,6 +1,6 @@
 ﻿using App.API.Interfaces;
 using App.API.Models;
-using EFGenericRepositoryPattern.Repositories;
+using EFCore.GenericRepositoryPattern.Repositories;
 
 namespace App.API.Services
 {

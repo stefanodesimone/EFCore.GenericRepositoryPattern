@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGenericRepositoryPattern", "GenericRepositoryPattern\EFGenericRepositoryPattern.csproj", "{ECD8967B-2277-4FCA-B354-A8C60DF9F776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.GenericRepositoryPattern", "GenericRepositoryPattern\EFCore.GenericRepositoryPattern.csproj", "{ECD8967B-2277-4FCA-B354-A8C60DF9F776}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.API", "App.API\App.API.csproj", "{8E71BF90-2F6D-40AE-A0E9-9791AF33714B}"
 EndProject
