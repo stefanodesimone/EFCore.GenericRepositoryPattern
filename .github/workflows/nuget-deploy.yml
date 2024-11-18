@@ -8,7 +8,7 @@ on:
 #    - 'v*'
 
 env:
-  PROJECT_PATH: 'GenericRepositoryPattern/EFGenericRepositoryPattern.csproj'
+  PROJECT_PATH: 'GenericRepositoryPattern/EFCore.GenericRepositoryPattern.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 
