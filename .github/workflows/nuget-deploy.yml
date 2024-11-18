@@ -8,8 +8,8 @@ on:
 #    - 'v*'
 
 env:
-  PROJECT_PATH: 'GenericRepositoryPattern/EFGenericRepositoryPattern.csproj'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  PROJECT_PATH: 'GenericRepositoryPattern/EFCore.GenericRepositoryPattern.csproj'
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
@@ -41,14 +41,9 @@ jobs:
           tag_prefix: 'tags'
     - name: Use version
       run: echo 'Calculated version:' ${{ steps.calculate-version.outputs.version-string }}
-
-#    - name: 'Get Version'
-#      id: version
-#      uses: battila7/get-version-action@v2.2.1
-#    - run: echo ${{ steps.get_version.outputs.version }}
     
-#    - name: 'Pack project'
-#      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
-#
-#    - name: 'Push package'
-#      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
+ #   - name: 'Pack project'
+ #     run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.calculate-version.outputs.version-string }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+ #   - name: 'Push package'
+ #     run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
