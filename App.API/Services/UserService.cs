@@ -53,6 +53,12 @@ namespace App.API.Services
             return _repo.GetById(id);
         }
 
+        public void InsertMany(IEnumerable<Utenti> value)
+        {
+            _repo.InsertMany(value);
+            Save();
+        }
+
         public void Save()
         {
             _repo.Save();

@@ -23,6 +23,10 @@ namespace EFCore.GenericRepositoryPattern.Repositories
         /// </summary>
         void Insert(TEntity obj);
         /// <summary>
+        /// To insert many new entity.
+        /// </summary>
+        void InsertMany(IEnumerable<TEntity> obj);
+        /// <summary>
         /// To update an entity.
         /// </summary>
         void Update(TEntity obj);

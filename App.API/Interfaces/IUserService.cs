@@ -14,5 +14,6 @@ namespace App.API.Interfaces
         Task<int> SaveAsync();
         Utenti Get(int id);
         IEnumerable<Utenti> ExecuteSqlCommand(FormattableString sql);
+        void InsertMany(IEnumerable<Utenti> value);
     }
 }

@@ -44,8 +44,9 @@ namespace App.API.Controllers
 
         // POST api/<UtentiController>
         [HttpPost]
-        public void Post([FromBody] Utenti value)
+        public void Post([FromBody] IEnumerable<Utenti> value)
         {
+            _userService.InsertMany(value);  
         }
 
         // PUT api/<UtentiController>/5

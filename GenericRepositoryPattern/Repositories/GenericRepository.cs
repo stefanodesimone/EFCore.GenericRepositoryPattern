@@ -35,6 +35,11 @@ namespace EFCore.GenericRepositoryPattern.Repositories
             _dbSet.Add(obj);
         }
 
+        public void InsertMany(IEnumerable<TEntity> obj)
+        {
+            _context.Set<TEntity>().AddRange(obj);
+        }
+
         public void Update(TEntity obj)
         {
             _context.Entry(obj).State = EntityState.Modified;
