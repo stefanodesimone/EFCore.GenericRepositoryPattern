@@ -7,8 +7,7 @@ env:
   PROJECT_PATH: 'GenericRepositoryPattern/EFCore.GenericRepositoryPattern.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
-  NEXT_VERSION: ${{ steps.versioning.outputs.version }}
-  PREVIOUS_VERSION: ${{ steps.versioning.outputs.previous_version }}
+
 jobs:
   deploy:
     name: 'Deploy'
@@ -52,8 +51,8 @@ jobs:
   # ^ this if statement ensures that two versions are not generated
   #   on the same commit.
 
-      run: echo "Previous version is $PREVIOUS_VERSION"
-           echo "Next version is $NEXT_VERSION"     
+      run: echo 'Previous version is' ${{ steps.versioning.outputs.previous_version }}
+           echo 'Next version is ' ${{ steps.versioning.outputs.version }}     
      
     
 #    - name: 'Pack project'
