@@ -35,6 +35,10 @@ namespace EFCore.GenericRepositoryPattern.Repositories
         /// </summary>
         void Delete(object id);
         /// <summary>
+        /// To delete many entities.
+        /// </summary>
+        void DeleteMany(IEnumerable<TEntity> obj);
+        /// <summary>
         /// To persist to the database.
         /// </summary>
         void Save();

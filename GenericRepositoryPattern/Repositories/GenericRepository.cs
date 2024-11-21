@@ -51,6 +51,10 @@ namespace EFCore.GenericRepositoryPattern.Repositories
             _dbSet.Remove(existing);
         }
 
+        public void DeleteMany(IEnumerable<TEntity> obj)
+        {
+            _context.Set<TEntity>().RemoveRange(obj);
+        }
         public void Save()
         {
             _context.SaveChanges();
@@ -84,6 +88,7 @@ namespace EFCore.GenericRepositoryPattern.Repositories
             return await _dbSet.FromSqlRaw(sql, parameters).ToListAsync();
 
         }
+
 
     }
 }
