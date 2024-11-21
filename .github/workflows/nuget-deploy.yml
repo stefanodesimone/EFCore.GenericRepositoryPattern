@@ -7,7 +7,8 @@ env:
   PROJECT_PATH: 'GenericRepositoryPattern/EFCore.GenericRepositoryPattern.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
-
+  NEXT_VERSION: ${{ steps.versioning.outputs.version }}
+  PREVIOUS_VERSION: ${{ steps.versioning.outputs.previous_version }}
 jobs:
   deploy:
     name: 'Deploy'
@@ -38,6 +39,21 @@ jobs:
     - name: Use version
       run: echo 'Calculated version:' ${{ steps.calculate-version.outputs.version-string }}
 
+    - name: calculate version2
+      uses: oss-actions/auto-semver@<version>
+      id: versioning
+      with:
+       token: ${{ github.token }}
+       repository: ${{ github.repository }}
+       type: major | minor | patch
+
+    - name: Print previous and next semver version
+      if: github.ref != steps.versioning.outputs.previous_version_ref
+  # ^ this if statement ensures that two versions are not generated
+  #   on the same commit.
+
+      run: echo "Previous version is $PREVIOUS_VERSION"
+           echo "Next version is $NEXT_VERSION"     
      
     
 #    - name: 'Pack project'
