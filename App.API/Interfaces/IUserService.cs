@@ -15,5 +15,6 @@ namespace App.API.Interfaces
         Utenti Get(int id);
         IEnumerable<Utenti> ExecuteSqlCommand(FormattableString sql);
         void InsertMany(IEnumerable<Utenti> value);
+        void DeleteMany(IEnumerable<Utenti> value);
     }
 }

@@ -58,7 +58,11 @@ namespace App.API.Services
             _repo.InsertMany(value);
             Save();
         }
-
+        public void DeleteMany(IEnumerable<Utenti> value)
+        {
+            _repo.DeleteMany(value);
+            Save();
+        }
         public void Save()
         {
             _repo.Save();
