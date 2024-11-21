@@ -2,11 +2,7 @@ name: "Deploy to NuGet"
 on:
   push:
     branches: [master]
-#on:
-#  push:
-#    tags:
-#    - 'v*'
-
+    
 env:
   PROJECT_PATH: 'GenericRepositoryPattern/EFCore.GenericRepositoryPattern.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
