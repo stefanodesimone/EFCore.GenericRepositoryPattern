@@ -61,5 +61,10 @@ namespace App.API.Controllers
         {
             _userService.Delete(id);
         }
+        [HttpDelete("DeleteMany")]
+        public void DeleteMany([FromBody] IEnumerable<Utenti> value)
+        {
+            _userService.DeleteMany(value);
+        }
     }
 }
