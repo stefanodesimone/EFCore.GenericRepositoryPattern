@@ -44,7 +44,8 @@ jobs:
       with:
        token: ${{ github.token }}
        repository: ${{ github.repository }}
-       type: major | minor | patch
+       type: major 
+       #| minor | patch
 
     - name: Print previous and next semver version
       if: github.ref != steps.versioning.outputs.previous_version_ref
