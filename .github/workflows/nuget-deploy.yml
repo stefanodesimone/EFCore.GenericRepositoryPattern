@@ -45,26 +45,8 @@ jobs:
     - name: Use version
       run: echo 'Calculated version:' ${{ steps.calculate-version.outputs.version-string }}
 
-    - name: calculate version2
-      uses: oss-actions/auto-semver@v0.1.4
-      id: versioning
-      with:
-       token: ${{ github.token }}
-       repository: ${{ github.repository }}
-       type: major 
-       #| minor | patch
+    - name: 'Pack project'
+      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.calculate-version.outputs.version-string }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
-    - name: Print previous and next semver version
-      if: github.ref != steps.versioning.outputs.previous_version_ref
-  # ^ this if statement ensures that two versions are not generated
-  #   on the same commit.
-
-      run: echo 'Previous version is' ${{ steps.versioning.outputs.previous_version }}
-           echo 'Next version is ' ${{ steps.versioning.outputs.version }}     
-     
-    
-#    - name: 'Pack project'
-#      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.calculate-version.outputs.version-string }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
-
-#    - name: 'Push package'
-#      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
+    - name: 'Push package'
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s ${{ env.NUGET_SOURCE_URL }}
