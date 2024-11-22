@@ -21,9 +21,7 @@ jobs:
         fetch-depth: 0
     - name: Set tags env variables.
       run: |
-        # Get your last commit message, not the merge commit.
-        #echo "Messaggio Commit::::::: " ${{ (git log -1 --no-merges --pretty=%B)}}
-        echo "Messaggio Commit=$(git log -1 --no-merges --pretty=%B)" >> $GITHUB_OUTPUT
+        echo "${{toJSON(github.event)}}"
 
     - name: 'Install dotnet'
       uses: actions/setup-dotnet@v1
