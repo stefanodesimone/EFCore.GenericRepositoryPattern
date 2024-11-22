@@ -12,9 +12,11 @@ jobs:
   deploy:
     name: 'Deploy'
     runs-on: 'ubuntu-latest'
+    permissions:
+      contents: write
     steps:
     - name: 'Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: 'Install dotnet'
       uses: actions/setup-dotnet@v1
@@ -30,7 +32,7 @@ jobs:
     - name: calculate version
       id: calculate-version
      
-      uses: bitshifted/git-auto-semver@v1
+      uses: bitshifted/git-auto-semver@v1.1.0
       with:
           main_branch: master
           create_tag: true
