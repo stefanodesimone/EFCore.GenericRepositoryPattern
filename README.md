@@ -9,3 +9,35 @@ builder.Services.AddDbContext<NameofTheContext>(options =>
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<DbContext, NameofTheContext>();
 ```
+# Usage example
+```c#
+public class UserService : IUserService
+{
+    private readonly IGenericRepository<Utenti> _repo;
+
+    public UserService(IGenericRepository<Utenti> repository)
+    {
+        _repo = repository;
+    }
+
+    public void Delete(object id)
+    {
+        _repo.Delete(id);
+    }
+
+    public IEnumerable<Utenti> ExecuteSqlCommand(FormattableString sql)
+    {
+        return _repo.ExecuteSqlCommand(sql);
+    }
+
+    public Utenti Get(int id)
+    {
+        return _repo.GetById(id);
+    }
+
+    public IEnumerable<Utenti> GetAll()
+    {
+       return _repo.GetAll();
+    }
+}
+```
